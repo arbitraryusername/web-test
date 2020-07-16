@@ -10,8 +10,8 @@ import {
   NotEmpty
 } from 'sequelize-typescript'
 
-@Table({ tableName: 'restaurants' })
-export class Restaurant extends Model<Restaurant> {
+@Table({ tableName: 'reservations' })
+export class Reservation extends Model<Reservation> {
   @PrimaryKey
   @Column({ autoIncrement: true })
   id: number
@@ -21,8 +21,18 @@ export class Restaurant extends Model<Restaurant> {
   @Column
   name: string
 
+  @AllowNull(false)
+  @NotEmpty
   @Column
-  address: string
+  email: string
+
+  @AllowNull(false)
+  @Column
+  partySize: number
+
+  @AllowNull(false)
+  @Column
+  date: Date
 
   @DeletedAt
   deleted_at: string
